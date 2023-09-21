@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from git import Repo
+import git
 from django.http import HttpResponse
 
 
@@ -11,9 +11,8 @@ def home(request):
 @csrf_exempt
 def webhook(request):
     if request.method == 'POST':
-        repo = Repo("./")
-        git = repo.git
-        git.checkout('main')
-        git.pull()
+        repo = git.Repo('./')
+        origin = repo.remotes.origin
+        origin.pull()
         return HttpResponse("pull_success", status=200)
     return HttpResponse("fail", status=400)
