@@ -11,7 +11,7 @@ domain_name = 'hnryjsph9.pythonanywhere.com'
 
 def reload():
     response = requests.post(f"https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain_name}/reload/",
-                             headers={f'Authorization': 'Token {api_token}'})
+                             headers={'Authorization': f'Token {api_token}'})
 
     if response.status_code == 200:
         print("reloaded OK")
