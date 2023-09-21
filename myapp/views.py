@@ -10,9 +10,12 @@ def home(request):
 
 @csrf_exempt
 def webhook(request):
-    if request.method == 'POST':
-        repo = git.Repo('./')
-        origin = repo.remotes.origin
-        origin.pull()
-        return HttpResponse("pull_success", status=200)
-    return HttpResponse("fail", status=400)
+    try:
+        if request.method == 'POST':
+            repo = git.Repo('./')
+            origin = repo.remotes.origin
+            origin.pull()
+            return HttpResponse("pull_success", status=200)
+        return HttpResponse("fail", status=400)
+    except:
+        print("_________________")
