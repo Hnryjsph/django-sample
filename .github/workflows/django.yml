@@ -30,3 +30,10 @@ jobs:
     - name: Django testing
       run:
         python3 manage.py test
+    - name: Reloading Server
+      uses: jensvog/pythonanywhere-webapp-reload-action@v1
+      with:
+        host: 'pythonanywhere.com'
+        username: 'hnryjsph9'
+        api-token: '66ae059404887ef91d6cc7fc13f958ed31e43e32'
+        domain-name: 'https://hnryjsph9.pythonanywhere.com'
