@@ -12,7 +12,7 @@ def home(request):
 def webhook(request):
 
     if request.method == 'POST':
-        repo = git.Repo('https://github.com/Hnryjsph/django-sample.git')
+        repo = git.Repo('django-sample')
         origin = repo.remotes.origin
         origin.pull()
         return HttpResponse("pull_success", status=200)
